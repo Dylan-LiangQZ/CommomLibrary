@@ -10,7 +10,7 @@
 class COMMON_DLL_SPEC CDBConn
 {
 protected:
-	_ConnectionPtr   m_pConn;
+	
 
 	CString			m_szServerName;
 	CString			m_szUser;
@@ -21,7 +21,8 @@ protected:
 
 public:
 	static CDBConn* Instance();
-    
+	_ConnectionPtr   m_pConn;
+
 protected:
 	CDBConn(void);
 	~CDBConn(void);
@@ -31,10 +32,10 @@ public:
 
 	BOOL CreateTable(CString szTableName, const std::vector<CString>& TableColumnNameV);
 	BOOL AddTableRecord(CString szTableName, const std::vector<CString>& TableColumnNameV, const std::vector<CString>& TableRowDataV);
-	BOOL AlterTableRecord(CString szTableName, const std::vector<CString>& TableColumnNameV, const std::vector<CString>& TableRowDataV, CString szConditionSQLCmd);
 
 	CString GetLastErrInfo() { return m_szLastErrInfo; }
 
-public: // SQL inquiry 
-	BOOL SQLCommandQuery(CString szTableName, CString szSQLCmd, _RecordsetPtr& pRecordset);
+public: 
+	BOOL SQLCommandExecute(CString szSQLCmd);
+	BOOL SQLCommandQuery(CString szSQLCmd, _RecordsetPtr& pRecordset);
 };

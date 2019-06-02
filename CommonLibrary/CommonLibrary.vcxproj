@@ -176,6 +176,8 @@ COPY $(TargetDir)$(TargetName).pdb $(Libraries)\$(ProjectName)\$(PlatformName)\$
   <ItemGroup>
     <ClInclude Include="CommonLib.h" />
     <ClInclude Include="DataBase\DBConn.h" />
+    <ClInclude Include="Factory\BaseComponent.h" />
+    <ClInclude Include="Factory\ObjectFactory.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Tinyxml\tinystr.h" />
@@ -199,6 +201,8 @@ COPY $(TargetDir)$(TargetName).pdb $(Libraries)\$(ProjectName)\$(PlatformName)\$
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Factory\BaseComponent.cpp" />
+    <ClCompile Include="Factory\ObjectFactory.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

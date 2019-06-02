@@ -40,6 +40,7 @@ BOOL CDBConn::InitDataBase(CString szDataBaseName)
 
 	try
 	{
+		                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
 		CString szSql;
 
 		HRESULT hRelt = m_pConn.CreateInstance("ADODB.Connection");
@@ -156,33 +157,11 @@ BOOL CDBConn::AddTableRecord(CString szTableName, const std::vector<CString>& Ta
 }
 
 
-BOOL CDBConn::AlterTableRecord(CString szTableName, const std::vector<CString>& TableColumnNameV, const std::vector<CString>& TableRowDataV, CString szConditionSQLCmd)
+BOOL CDBConn::SQLCommandExecute(CString szSQLCmd)
 {
-	if (TableColumnNameV.size() != TableRowDataV.size())
-	{
-		return FALSE;
-		m_szLastErrInfo = "Column and Value does not match.";
-	}
-
 	try
 	{
-		CString szCommondLine;	
-		szCommondLine.Format("update %s set ", szTableName);
-
-		CString szSetValueLine;
-		for (int i = 0; i < TableColumnNameV.size(); ++i)
-		{
-			CString szTemp;
-			szTemp.Format("%s ='%s', ", TableColumnNameV[i], TableRowDataV[i]);
-			szSetValueLine += szTemp;
-		}
-		szSetValueLine = szSetValueLine.Left(szSetValueLine.GetLength() - 2);
-		
-		CString szSql = szCommondLine + szSetValueLine + "where " + szConditionSQLCmd;
-
-		TRACE(szSql);
-
-		m_pConn->Execute(_bstr_t(szSql), NULL, adCmdText);
+		m_pConn->Execute(_bstr_t(szSQLCmd), NULL, adCmdText);
 	}
 	catch (_com_error& e)
 	{
@@ -191,12 +170,12 @@ BOOL CDBConn::AlterTableRecord(CString szTableName, const std::vector<CString>& 
 
 		return FALSE;
 	}
-
+	
 	return TRUE;
 }
 
 
-BOOL CDBConn::SQLCommandQuery(CString szTableName, CString szSQLCmd, _RecordsetPtr& pRecordset)
+BOOL CDBConn::SQLCommandQuery(CString szSQLCmd, _RecordsetPtr& pRecordset)
 {
 	try
 	{

@@ -19,6 +19,9 @@
     <Filter Include="DataBase">
       <UniqueIdentifier>{46c3d96b-f407-47fe-9cd3-73486d7c369c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Factory">
+      <UniqueIdentifier>{ed84600a-7a52-41d0-aff1-545af6ad43c8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -44,6 +47,12 @@
     </ClInclude>
     <ClInclude Include="DataBase\DBConn.h">
       <Filter>DataBase</Filter>
+    </ClInclude>
+    <ClInclude Include="Factory\ObjectFactory.h">
+      <Filter>Factory</Filter>
+    </ClInclude>
+    <ClInclude Include="Factory\BaseComponent.h">
+      <Filter>Factory</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -73,6 +82,12 @@
     </ClCompile>
     <ClCompile Include="DataBase\DBConn.cpp">
       <Filter>DataBase</Filter>
+    </ClCompile>
+    <ClCompile Include="Factory\ObjectFactory.cpp">
+      <Filter>Factory</Filter>
+    </ClCompile>
+    <ClCompile Include="Factory\BaseComponent.cpp">
+      <Filter>Factory</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
